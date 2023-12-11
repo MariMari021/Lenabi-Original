@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editora LeNabi</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="style7.css">
+    <script src="https://kit.fontawesome.com/a2288264db.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="img-interface/lenabi 1.png" type="image/x-icon">
+    <link rel="stylesheet" href="produto.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="stylemobile.css">
+    
+
+</head>
+
+<body>
+    <header id="header">
+        <div class="container-fundo">
+            <div class="container">
+                <a href="index.html">
+                    <div class="logo">
+                        <img src="img-interface/lenabi 1.png" alt="borboleta voando dentro de um livro">
+                        <h2>LeNabi</h2>
+                    </div>
+                </a>
+                <div class="buscar">
+                    <input type="text" id="buscar" placeholder="Buscar livro" oninput="buscarProduto()">
+                </div>
+
+                <div id="favoritos" onclick="toggleFavoritos()">
+                    <div class="imagem">
+                        <i class="fa-regular fa-heart" style="color: #522318; "></i>
+                    </div>
+                    <span id="cont-favoritos">0</span>
+                </div>
+                <div id="carrinho-itens" style="display: none;">
+                    <ul id="itens-lista"></ul>
+                    <span id="preco-total">Valor Total: R$0,00</span>
+                    <button class="car" onclick="limparCarrinho()">Limpar Carrinho</button>
+                </div>
+                <!-- Dentro da div do usuário logado -->
+                <div class="usuario-logado" id="userHeader" onclick="mostrarOcultarPopup()">
+                    <i class="fa-solid fa-user" style="color: #522318;"></i>
+                    <span id="nomeUsuario"></span>
+                </div>
+                <div id="popup" style="display: none;">
+                    <div class="popup-conteudo">
+                        <img src="img-interface/Group 20.svg" alt="">
+                        <span id="conteudoPopup"></span>
+                        <span id="emailUsuario"></span>
+                        <br>
+
+                    </div>
+                    <button class="botaoSair" onclick="logout()">
+                        <p>Sair</p>
+                        <i id="logoutButton" class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
+                </div>
+                <a href="login.html" class="button" id="loginButton"><span>Fazer login</span></a>
+                <div class="botaoMenu">
+                    <button onclick="toggleMenu()" class="burger material-symbols-outlined">
+                        menu
+                    </button>
+                </div>
+            </div>
+            <nav class="navbar">
+                <div class="buscarMobile">
+                    <input type="text" spellcheck="false" class="buscarMobile" id="buscarMobile"
+                        placeholder="Buscar livro" oninput="buscarMobile()">
+                </div>
+                <nav>
+                    <div class=" botoes-login">
+                        <a href="index.html">Home</a>
+                        <a href="produto.html#pre-venda">Pré-Venda</a>
+                        <a href="produto.html#lancamentos-page">Lançamentos</a>
+                        <a href="produto.html">Produtos</a>
+                        <a href="sustentabilidade.html">Sustentabilidade</a>
+                        <a onclick="toggleFav()" href="#">Favoritos</a>
+                        <a href="sobre-nos.html">Sobre nós</a>
+                        <a id="sideUser" href="login.html">Login</a>
+                        <div class="logado-mobile" id="userHeaderMobile" onclick="toggleMobile()">
+                            <i class="fa-solid fa-user" style="color: #522318;"></i>
+                            <span id="userMobile"></span>
+                        </div>
+                    </div>
+                </nav>
+            </nav>
+            <nav class="navbarUser">
+                <nav>
+                    <div id="popupMobile">
+                        <div class="popupMobileAll">
+                            <img src="img-interface/Group 20.svg" alt="">
+                            <span id="conteudoMobile"></span>
+                            <span id="emailMobile"></span>
+                            <br>
+
+                        </div>
+                        <button class="botaoSairMobile" onclick="logout()">
+                            <p>Sair</p>
+                            <i id="logoutButtonMobile" class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </button>
+                    </div>
+
+                </nav>
+            </nav>
+            <nav class="navbarFav">
+                <nav>
+                    <div id="popupMobile">
+                        <div class="popupMobileAll">
+                            <img src="img-interface/Group 20.svg" alt="">
+                            <span id="conteudoMobile"></span>
+                            <span id="emailMobile"></span>
+                            <br>
+
+                        </div>
+                        <button class="botaoSairMobile" onclick="logout()">
+                            <p>FAVORITOS FAZER NAO CONFUNDIR AAAA</p>
+                            <p>Sair</p>
+                            <i id="logoutButtonMobile" class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </button>
+                    </div>
+
+                </nav>
+            </nav>
+        </div>
+
+
+        </div>
+        </div>
+
+        <nav class="navDesktop">
+            <div class="botoes">
+                <a href="produto.html#pre-venda">Pré-Venda</a>
+                <a href="produto.html#lancamentos-page">Lançamentos</a>
+                <a href="produto.html">Produtos</a>
+                <a href="sustentabilidade.html">Sustentabilidade</a>
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="individual">
+            <div class="container-individual">
+
+                <div class="tarja-individual"></div>
+
+                <div class="produto-individual">
+
+                    <div class="info-produ-mobile">
+                        <h1>O ceifador</h1>
+                        <h3><span>por</span> Neal Shusterman <span class="italic">(Autor)</span></h3>
+                    </div>
+
+                    <div class="produto-img">
+                        <img src="img produto/o ceifador.webp" alt="o ceifador">
+                    </div>
+
+                    <div class="produto-texto">
+
+                        <div class="info-produ">
+                            <h1>O ceifador</h1>
+                            <h3><span>por</span> Neal Shusterman <span class="italic">(Autor)</span></h3>
+                        </div>
+
+                        <div class="preco-produ">
+                            <div class="preco">
+                                <h1>R$27,90</h1>
+                                <h2>R$39,34</h2>
+                            </div>
+
+                            <div class="frase">
+                                <p class="italic">Questiona a imortalidade em uma sociedade futurística.</p>
+                                <div class="linha-prod"></div>
+                                <p>A humanidade venceu todas as barreiras: fome, doenças, guerras, miséria… Até
+                                    mesmo a morte. Agora os ceifadores são os únicos que podem pôr fim a uma vida, impedindo que
+                                    o crescimento populacional vá além do limite e a Terra deixe de comportar a população por
+                                    toda a eternidade.</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            <div class="image-card">
+                                <img class="icon" src="img produto/livro icone.png" alt="livro icone">
+                                <p class="espec">448 Páginas</p>
+                            </div>
+                            <div class="image-card">
+                                <img class="icon" src="img produto/planeta icone.png" alt="planeta icone">
+                                <p class="espec">Português-BR</p>
+                            </div>
+                            <div class="image-card">
+                                <button class="produtinhos" data-produto-nome="O Ceifador" data-preco="27.90">
+                                    <img class="icon-coracao" src="img produto/coracao icone.png" alt="produto icone"
+                                        id="coracao-vazio-5">
+                                    <img class="icon-coracaoP" src="img produto/cora-pintado.png" alt="produto icone"
+                                        id="coracao-pintado-5" style="display: none;">
+                                </button>
+                                <p class="espec-coracao" id="contador-coracao-5" data-ativo="false"
+                                    data-valor-inicial="150">150</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="botao-compre">
+                <a href="https://www.amazon.com.br/ceifador-Neal-Shusterman/dp/8555340357/ref=sr_1_1?__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2YH30BC2EW56&keywords=o+ceifador&qid=1702258689&sprefix=o+ceifado%2Caps%2C263&sr=8-1"
+                    target="_blank">Compre Já!</a>
+            </div>
+
+            </div>
+        </section>
+
+        <section id="detalhes">
+            <div class="container-detalhe">
+
+                <div class="detalhe-titulo">
+                    <div class="detalhe-linha-mobile"></div>
+                    <h1>Detalhes do produto</h1>
+                    <div class="detalhe-linha"></div>
+                </div>
+
+                <div class="infos-detalhe">
+                    <h1>Editora: <span>LeNabi ; 3ª edição</span></h1>
+                    <h1>Data de publicação: <span>29 de outubro de 2023</span></h1>
+                    <h1>Classificação indicativa: <span><img src="img produto/18anos.png" alt="18 anos"></span></h1>
+                    <h1>Gênero: <span>Ficção</span></h1>
+                    <h1>Tamanho do arquivo (Kindle): <span>2148 KB</span></h1>
+                    <h1>Avaliação do produto: <span>3.7 <img src="img produto/3.5estrela.png" alt="3.7 estrelas"></span>
+                    </h1>
+                </div>
+
+                <div class="linha-detalhe"></div>
+            </div>
+        </section>
+
+        <section id="produtos">
+            <div class="produtos-titulo">
+                <h1>Livros sugeridos para você!</h1>
+                <div class="linha-produto"></div>
+            </div>
+
+            <div class="realFundo">
+
+                <div class="livros">
+                    <h2>A Cabana</h2>
+                    <p> William P.</p>
+                    <a href="index8.html">
+                        <img src="img produto/a cabana.webp" alt="a cabana">
+                        <div class="buttonPreco">
+                            <h3>R$43,99</h3>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="livros">
+                    <h2>Os irmãos...</h2>
+                    <p> Jennifer L.</p>
+                    <a href="index7.html">
+                        <img src="img produto/irmaos Hawthorne.webp" alt="irmaos Hawthorne">
+                        <div class="buttonPreco">
+                            <h3>R$68,90</h3>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="livros">
+                    <h2>Jogo Fatal</h2>
+                    <p>Holly J.</p>
+                    <a href="index10.html">
+                        <img src="img produto/jogo fatal.webp" alt="jogo fatal">
+                        <div class="buttonPreco">
+                            <h3>R$34,90</h3>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="realFundo-mobile">
+                <div class="livros-mobile active" id="livro1">
+                    <h2>A Cabana</h2>
+                    <p> William P.</p>
+                    <a href="index8.html">
+                        <img src="img produto/a cabana.webp" alt="a cabana">
+                        <div class="buttonPreco">
+                            <h3>R$43,99</h3>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="livros-mobile" id="livro2">
+                    <h2>Os irmãos...</h2>
+                    <p> Jennifer L.</p>
+                    <a href="index7.html">
+                        <img src="img produto/irmaos Hawthorne.webp" alt="irmaos Hawthorne">
+                        <div class="buttonPreco">
+                            <h3>R$68,90</h3>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="livros-mobile" id="livro3">
+                    <h2>Jogo Fatal</h2>
+                    <p>Holly J.</p>
+                    <a href="index10.html">
+                        <img src="img produto/jogo fatal.webp" alt="jogo fatal">
+                        <div class="buttonPreco">
+                            <h3>R$34,90</h3>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="botao">
+                    <button onclick="prevLivro()"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button onclick="nextLivro()"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <div class="produto-linha"></div>
+        </section>
+
+    </main>
+
+    <footer id="footer">
+        <div class="container-footer">
+            <nav>
+                <div class="parte1">
+                    <a href="produto.html">Produtos</a>
+                    <a href="produto.html#lancamentos-page" class="footer-desktop">Lançamentos</a>
+                    <a href="produto.html#pre-venda" class="footer-desktop">Pré-venda</a>
+                </div>
+                <div class="parte2">
+                    <a href="#" class="footer-desktop" id="favoritos-link">Favoritos</a>
+
+                    <a href="sustentabilidade.html">Sustentabilidade</a>
+                    <a href="sobre-nos.html">Sobre nós</a>
+                </div>
+            </nav>
+            <div class="footer-branca"></div>
+            <div class="redes-sociais">
+                <a href="mailto:editoralenabi@gmail.com" target="_blank"><img class="email-footer"
+                        src="img-interface/carbon_email.svg" alt=""></a>
+                <a href="https://www.instagram.com/editoralenabi/?igshid=YTQwZjQ0NmI0OA%3D%3D" target="_blank"><img
+                        class="insta-footer" src="img-interface/uil_instagram.svg" alt=""></a>
+                <a href="https://x.com/LeNabiEditora?t=-ry8Op0ZSihvYuzXTeuZ8w&s=09" target="_blank"><img
+                        class="x-footer" src="img-interface/simple-icons_x.svg" alt=""></a>
+            </div>
+            <div class="footer-branco"></div>
+            <div class="logo-footer">
+                <img src="img-interface/lenabi 1.png" alt="">
+                <h2>LeNabi</h2>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        var currentIndex = 0;
+        var livros = document.querySelectorAll('.livros-mobile');
+
+        function showLivro(index) {
+            livros.forEach(livro => livro.classList.remove('active'));
+            livros[index].classList.add('active');
+        }
+
+        function nextLivro() {
+            currentIndex = (currentIndex + 1) % livros.length;
+            showLivro(currentIndex);
+        }
+
+        function prevLivro() {
+            currentIndex = (currentIndex - 1 + livros.length) % livros.length;
+            showLivro(currentIndex);
+        }
+    </script>
+
+    <script src="main.js"></script>
+    <script src="user.js"></script>
+</body>
+
+</html>
