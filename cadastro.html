@@ -66,8 +66,41 @@
                 </div>
             </nav>
         </nav>
+
+        <nav class="navbarUser">
+            <nav>
+                <div id="popupMobile">
+                    <div class="popupMobileAll">
+                        <img src="img-interface/Group 20.svg" alt="">
+                        <span id="conteudoMobile"></span>
+                        <span id="emailMobile"></span>
+                        <br>
+
+                    </div>
+                    <button class="botaoSairMobile" onclick="logout()">
+                        <p>Sair</p>
+                        <i id="logoutButtonMobile" class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
+                </div>
+
+            </nav>
+        </nav>
+        <nav class="navbarFav">
+            <nav>
+                <div id="favMobile">
+                 
+                </div>
+
+            </nav>
+        </nav>
+    </div>
     </header>
     <main id="main-cadastro">
+        <div id="idiomas">
+            <button onclick="Escolher('ptbr')"><img src="img-interface/bandeira-do-brasil 1.png" alt="brasil"></button>
+            <button onclick="Escolher('en')"><img src="img-interface/bandeira-estados-unidos 1.png" alt="estados unidos da america"></button>
+            <button onclick="Escolher('es')"><img src="img-interface/bandeira-da-espanha 1.png" alt="espanha"></button>
+        </div>
         <div class="box">
             <div class="conteudo-login">
                 <div class="titulo">
@@ -78,22 +111,22 @@
                     <div class="nome">
                         <img class="pencil" src="img-interface/Group 12.svg" alt="">
                         <div class="linha-nome"></div>
-                        <input type="text" placeholder="Nome" required>
+                        <input id="nome" type="text" placeholder="Nome" required>
                     </div>
                     <div class="email">
                         <i class="fa-solid fa-envelope" style="color: #522318"></i>
                         <div class="linha-email"></div>
-                        <input type="email" placeholder="E-mail" required>
+                        <input id="email" type="email" placeholder="E-mail" required>
                     </div>
                     <div class="telefone">
                         <i class="fa-solid fa-phone" style="color: #522318"></i>
                         <div class="linha-tel"></div>
-                        <input type="number" placeholder="Telefone" required>
+                        <input id="telefone" type="number" placeholder="Telefone" required>
                     </div>
                     <div class="usuario">
                         <i class="fa fa-user" style="color: #522318"></i>
                         <div class="linha-input"></div>
-                        <input type="text" placeholder="Usuário" required>
+                        <input id="usuario" type="text" placeholder="Usuário" required>
                     </div>
                     <div class="senha">
                         <i class="fa-solid fa-key" style="color: #522318" id="iconSenha"></i>
@@ -105,11 +138,11 @@
                 </div>
                 <div class="outros-registros">
                     <button id="registrarButton">Registrar</button>
-                    <p>Já tem conta? <a href="login.html"><span>Entre!</span></a></p>
+                    <p id="entrar">Já tem conta? <a href="login.html"><span>Entre!</span></a></p>
                 </div>
                 <div class="login-sociais">
                     <div class="linha-sociais"></div>
-                    <p>ou</p>
+                    <p id="ou">ou</p>
                     <div class="icons">
                         <img src="img-interface/Group 9.svg" alt="">
                         <img src="img-interface/Group 10.svg" alt="">
@@ -156,6 +189,29 @@
     
     <script src="user.js"></script>
     <script  type="text/javascript">
+
+function Escolher(idioma) {
+    fetch(`texto_${idioma}.json`)
+        .then(resposta => resposta.json())
+        .then(texto => {
+            console.log("Valores do JSON:", texto);
+
+            // Define o conteúdo do span #Bem
+            document.getElementById('tituCadastro').innerText = texto.tituCadastro;
+            document.getElementById('nome').placeholder = texto.nome;
+            document.getElementById('email').placeholder = texto.email;
+            document.getElementById('telefone').placeholder = texto.telefone;
+            document.getElementById('usuario').placeholder = texto.usuario;
+            document.getElementById('senhaInput').placeholder = texto.senhaInput;
+            document.getElementById('registrarButton').innerText = texto.registrarButton;
+            document.getElementById('entrar').innerText = texto.entrar;
+            document.getElementById('ou').innerText = texto.ou;
+
+
+
+    })
+}
+
         document.addEventListener('DOMContentLoaded', function () {
             const iconOlho = document.getElementById("iconOlho");
             const senhaInput = document.getElementById("senhaInput");

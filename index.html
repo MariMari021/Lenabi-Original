@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="produto.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="stylemobile.css">
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -108,19 +111,12 @@
             </nav>
             <nav class="navbarFav">
                 <nav>
-                    <div id="carrinho-mobile">
-                        <ul id="itens-mobile"></ul>
-                        <span id="preco-totalMobile">Valor Total: R$0,00</span>
-                        <button class="carMobile" onclick="limparCarrinhoMobile()">Limpar Carrinho</button>
-                    </div>
+                    <div id="favMobile">
 
+                    </div>
 
                 </nav>
             </nav>
-        </div>
-
-
-        </div>
         </div>
 
         <nav class="navDesktop">
@@ -179,7 +175,7 @@
                 <div class="infoList">
                     <div class="info__wrapper">
                         <div class="info current--info">
-                            <h1 class="text name">Era Uma Vez <br>Um Coração Partido</h1>
+                            <h1 id="volUm" class="text name">Era Uma Vez <br>Um Coração Partido</h1>
                             <h4 class="text location">VOL . 1</h4>
                             <p class="text description">Literatura fantástica</p>
                         </div>
@@ -520,7 +516,7 @@
                     <a href="produto.html#pre-venda" class="footer-desktop">Pré-venda</a>
                 </div>
                 <div class="parte2">
-                    <a href="#" class="footer-desktop" id="favoritos-linkMobile">Favoritos</a>
+                    <a href="#" class="footer-desktop" id="favoritos-link">Favoritos</a>
 
                     <a href="sustentabilidade.html">Sustentabilidade</a>
                     <a href="sobre-nos.html">Sobre nós</a>
@@ -551,6 +547,21 @@
     <script src="main.js"></script>
 
     <script>
+
+function Escolher(idioma) {
+    fetch(`texto_${idioma}.json`)
+        .then(resposta => resposta.json())
+        .then(texto => {
+            console.log("Valores do JSON:", texto);
+
+            document.getElementById('volUm').innerText = texto.volUm;
+
+
+    })
+}
+
+
+
         function buscarMobile() {
             const termoDeBusca = document.getElementById("buscarMobile").value.toLowerCase();
             const main = document.getElementById("main");
@@ -593,9 +604,8 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             renderizarCabecalho();
+
         });
-
-
 
 
     </script>

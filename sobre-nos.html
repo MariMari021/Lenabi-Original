@@ -106,19 +106,8 @@
             </nav>
             <nav class="navbarFav">
                 <nav>
-                    <div id="popupMobile">
-                        <div class="popupMobileAll">
-                            <img src="img-interface/Group 20.svg" alt="">
-                            <span id="conteudoMobile"></span>
-                            <span id="emailMobile"></span>
-                            <br>
-
-                        </div>
-                        <button class="botaoSairMobile" onclick="logout()">
-                            <p>FAVORITOS FAZER NAO CONFUNDIR AAAA</p>
-                            <p>Sair</p>
-                            <i id="logoutButtonMobile" class="fa-solid fa-arrow-right-from-bracket"></i>
-                        </button>
+                    <div id="favMobile">
+                     
                     </div>
 
                 </nav>
@@ -141,32 +130,32 @@
     </header>
 
     <main id="sobre-nos">
+
+        <div id="idiomas">
+            <button onclick="Escolher('ptbr')"><img src="img-interface/bandeira-do-brasil 1.png" alt="brasil"></button>
+            <button onclick="Escolher('en')"><img src="img-interface/bandeira-estados-unidos 1.png" alt="estados unidos da america"></button>
+            <button onclick="Escolher('es')"><img src="img-interface/bandeira-da-espanha 1.png" alt="espanha"></button>
+        </div>
+
         <section>
             <div class="container-sobreNos">
                 <div class="titulo-sobre">
                     <img src="img-interface/Group_17-removebg-preview.png" alt="">
                     <div class="descubra-sobre">
-                        <h2 class="titulo1">descubra mais</h2>
-                        <h2 class="titulo2">sobre nós!</h2>
+                        <h2 class="titulo1" id="h21">descubra mais</h2>
+                        <h2 class="titulo2" id="h22">sobre nós!</h2>
                     </div>
                 </div>
                 <div class="line-sobre"></div>
                 <div class="nossaHistoria">
-                    <h3>Nossa história</h3>
-                    <p><span> </span>Na LeNabi, nossa história inspiradora começa com a paixão por livros e o
-                        compromisso
-                        com a sustentabilidade. Fundada por um grupo de amantes da literatura que acreditam que palavras
-                        podem mudar o mundo, nossa editora nasceu com o desejo de fazer a diferença.</p>
-                    <p><span> </span>Uma história de determinação e visão, nossa missão é clara: publicar uma ampla
-                        variedade de gêneros literários enquanto protegemos o planeta. Começamos em uma pequena sala com
-                        um
-                        punhado de autores
-                        talentosos, mas nossa dedicação à qualidade e à sustentabilidade nos impulsionou a crescer.</p>
+                    <h3 id="h3">Nossa história</h3>
+                    <p id="p"><span> </span>Na LeNabi, nossa história inspiradora começa com a paixão por livros e o compromisso com a sustentabilidade. Fundada por um grupo de amantes da literatura que acreditam que palavras podem mudar o mundo, nossa editora nasceu com o desejo de fazer a diferença.</p>
+                    <p id="p2"><span> </span>Uma história de determinação e visão, nossa missão é clara: publicar uma ampla variedade de gêneros literários enquanto protegemos o planeta. Começamos em uma pequena sala com um punhado de autores talentosos, mas nossa dedicação à qualidade e à sustentabilidade nos impulsionou a crescer.</p>
                 </div>
                 <div class="line-sobre"></div>
                 <div class="frase-sobre">
                     <img src="img-interface/Group 17 (1).png" alt="">
-                    <p>Junte-se a nós nessa jornada literária e sustentável e seja parte da nossa história!</p>
+                    <p id="p3">Junte-se a nós nessa jornada literária e sustentável e seja parte da nossa história!</p>
                 </div>
                 <div class="line-sobre"></div>
             </div>
@@ -205,6 +194,26 @@
     </footer>
     <script src="user.js"></script>
     <script type="text/javascript">
+
+function Escolher(idioma) {
+    fetch(`texto_${idioma}.json`)
+        .then(resposta => resposta.json())
+        .then(texto => {
+            console.log("Valores do JSON:", texto);
+
+            // Define o conteúdo do span #Bem
+            document.getElementById('h21').innerText = texto.h21;
+            document.getElementById('h22').innerText = texto.h22;
+            document.getElementById('h3').innerText = texto.h3;
+            document.getElementById('p').innerText = texto.p;
+            document.getElementById('p2').innerText = texto.p2;
+            document.getElementById('p3').innerText = texto.p3;
+            
+    })
+}
+
+
+
         function buscarProduto() {
             const termoDeBusca = document.getElementById("buscar").value.toLowerCase();
             const main = document.getElementById("sobre-nos");

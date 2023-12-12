@@ -1,506 +1,391 @@
-document.addEventListener('DOMContentLoaded', function () {
-    renderizarCabecalho();
+document.addEventListener("DOMContentLoaded", function () {
+  renderizarCabecalho();
 });
 
 function renderizarCabecalho() {
-    const headerLogin = document.getElementById("userHeader");
-    const loginButton = document.getElementById("loginButton");
-    const nomeUsuarioElement = document.getElementById("nomeUsuario");
-    const popup = document.getElementById("popup");
-    const conteudoPopup = document.getElementById("conteudoPopup");
-    const emailUsuarioPopup = document.getElementById("emailUsuario");
-    const userHeaderMobile = document.getElementById("userHeaderMobile");
-    const sideUser = document.getElementById("sideUser");
-    const nomeMobile = document.getElementById("userMobile");
-    const conteudoMobile = document.getElementById("conteudoMobile");
-    const emailMobile = document.getElementById("emailMobile");
+  const headerLogin = document.getElementById("userHeader");
+  const loginButton = document.getElementById("loginButton");
+  const nomeUsuarioElement = document.getElementById("nomeUsuario");
+  const popup = document.getElementById("popup");
+  const conteudoPopup = document.getElementById("conteudoPopup");
+  const emailUsuarioPopup = document.getElementById("emailUsuario");
+  const userHeaderMobile = document.getElementById("userHeaderMobile");
+  const sideUser = document.getElementById("sideUser");
+  const nomeMobile = document.getElementById("userMobile");
+  const conteudoMobile = document.getElementById("conteudoMobile");
+  const emailMobile = document.getElementById("emailMobile");
 
+  // Obtenha o nome e email do usuário armazenados no localStorage
+  const nomeUsuario = localStorage.getItem("nomeUsuario");
+  const emailUsuario = localStorage.getItem("emailUsuario");
 
-    // Obtenha o nome e email do usuário armazenados no localStorage
-    const nomeUsuario = localStorage.getItem('nomeUsuario');
-    const emailUsuario = localStorage.getItem('emailUsuario');
+  // Verifica se os elementos existem antes de manipulá-los
+  if (
+    headerLogin &&
+    loginButton &&
+    nomeUsuarioElement &&
+    popup &&
+    conteudoPopup &&
+    emailUsuarioPopup
+  ) {
+    // Verifica a largura da tela
+    console.log("Largura da tela:", window.innerWidth);
+    if (window.innerWidth >= 975) {
+      if (nomeUsuario) {
+        // Usuário logado
+        console.log("Usuário logado:", nomeUsuario);
+        headerLogin.style.display = "flex";
+        nomeUsuarioElement.textContent = nomeUsuario; // Exibe o nome do usuário
+        loginButton.style.display = "none";
+      } else {
+        // Usuário não logado
+        console.log("Usuário não logado");
+        headerLogin.style.display = "none";
+        loginButton.style.display = "flex";
+      }
 
-    // Verifica se os elementos existem antes de manipulá-los
-    if (headerLogin && loginButton && nomeUsuarioElement && popup && conteudoPopup && emailUsuarioPopup) {
-        // Verifica a largura da tela
-        console.log("Largura da tela:", window.innerWidth);
-        if (window.innerWidth >= 975) {
-            if (nomeUsuario) {
-                // Usuário logado
-                console.log("Usuário logado:", nomeUsuario);
-                headerLogin.style.display = "flex";
-                nomeUsuarioElement.textContent = nomeUsuario;  // Exibe o nome do usuário
-                loginButton.style.display = "none";
-            } else {
-                // Usuário não logado
-                console.log("Usuário não logado");
-                headerLogin.style.display = "none";
-                loginButton.style.display = "flex";
-            }
+      // Adiciona um evento de clique ao headerLogin
+      headerLogin.addEventListener("click", function () {
+        // Exibe o popup
+        popup.style.display = "grid";
 
-            // Adiciona um evento de clique ao headerLogin
-            headerLogin.addEventListener("click", function () {
-                // Exibe o popup
-                popup.style.display = "grid";
-
-                // Preenche o conteúdo do popup com o nome e email do usuário
-                conteudoPopup.textContent = nomeUsuario;
-                emailUsuarioPopup.textContent = emailUsuario; // Adiciona o email do usuário ao popup
-                console.log("Nome do usuário:", nomeUsuario);
-                console.log("Email do usuário:", emailUsuario);
-            });
-        } if (window.innerWidth <= 975) {
-            loginButton.style.display = "none";
-            headerLogin.style.display = "none";
-            userHeaderMobile.style.display = "none";
-            popup.style.display = "none"
-            if (nomeUsuario) {
-                // Usuário logado
-                console.log("Usuário logado:", nomeUsuario);
-                userHeaderMobile.style.display = "flex";
-                nomeMobile.textContent = nomeUsuario;  // Exibe o nome do usuário
-                sideUser.style.display = "none";
-                conteudoMobile.textContent = nomeUsuario;
-
-                emailMobile.textContent = emailUsuario;
-
-            } else {
-                // Usuário não logado
-                console.log("Usuário não logado");
-                userHeaderMobile.style.display = "none";
-
-                sideUser.style.display = "flex";
-            }
-        } else {
-            console.error("A largura da tela é maior que 975 pixels.");
-        }
-    } else {
-        console.error("Elemento não encontrado. Verifique os IDs no HTML.");
+        // Preenche o conteúdo do popup com o nome e email do usuário
+        conteudoPopup.textContent = nomeUsuario;
+        emailUsuarioPopup.textContent = emailUsuario; // Adiciona o email do usuário ao popup
+        console.log("Nome do usuário:", nomeUsuario);
+        console.log("Email do usuário:", emailUsuario);
+      });
     }
+    if (window.innerWidth <= 975) {
+      loginButton.style.display = "none";
+      headerLogin.style.display = "none";
+      userHeaderMobile.style.display = "none";
+      popup.style.display = "none";
+      if (nomeUsuario) {
+        // Usuário logado
+        console.log("Usuário logado:", nomeUsuario);
+        userHeaderMobile.style.display = "flex";
+        nomeMobile.textContent = nomeUsuario; // Exibe o nome do usuário
+        sideUser.style.display = "none";
+        conteudoMobile.textContent = nomeUsuario;
+
+        emailMobile.textContent = emailUsuario;
+      } else {
+        // Usuário não logado
+        console.log("Usuário não logado");
+        userHeaderMobile.style.display = "none";
+
+        sideUser.style.display = "flex";
+      }
+    } else {
+      console.error("A largura da tela é maior que 975 pixels.");
+    }
+  } else {
+    console.error("Elemento não encontrado. Verifique os IDs no HTML.");
+  }
 }
 
 // Chame a função para garantir que seja executada
 renderizarCabecalho();
 
-
-
 const toggleMenu = () => {
-    // Fecha a openFav antes de abrir ou fechar o menu
-    if (document.body.classList.contains("openFav")) {
-        toggleFav();
-    }
+  // Fecha a openFav antes de abrir ou fechar o menu
+  if (document.body.classList.contains("openFav")) {
+    toggleFav();
+  }
 
-    // Fecha o toggleMobile antes de abrir ou fechar o menu
-    if (document.body.classList.contains("openMobile")) {
-        toggleMobile();
-    }
+  // Fecha o toggleMobile antes de abrir ou fechar o menu
+  if (document.body.classList.contains("openMobile")) {
+    toggleMobile();
+  }
 
-    // Abre ou fecha o menu
-    document.body.classList.toggle("open");
+  // Abre ou fecha o menu
+  document.body.classList.toggle("open");
 };
 
 const toggleMobile = () => {
-    // Fecha o menu antes de abrir a navbarUser
-    if (document.body.classList.contains("open")) {
-        toggleMenu();
-    }
-    // Abre ou fecha a navbarUser
-    document.body.classList.toggle("openMobile");
+  // Fecha o menu antes de abrir a navbarUser
+  if (document.body.classList.contains("open")) {
+    toggleMenu();
+  }
+  // Abre ou fecha a navbarUser
+  document.body.classList.toggle("openMobile");
 };
 
 const toggleFav = () => {
-    // Fecha o menu antes de abrir a openFav
-    if (document.body.classList.contains("open")) {
-        toggleMenu();
-    }
+  // Fecha o menu antes de abrir a openFav
+  if (document.body.classList.contains("open")) {
+    toggleMenu();
+  }
 
-    // Abre ou fecha a openFav
-    document.body.classList.toggle("openFav");
+  // Abre ou fecha a openFav
+  document.body.classList.toggle("openFav");
 
+  // Exibe o conteúdo do carrinho-itens em favMobile se openFav estiver aberto
+  const favMobile = document.getElementById("favMobile");
+  const carrinhoItens = document.getElementById("carrinho-itens");
+
+  if (document.body.classList.contains("openFav")) {
+    favMobile.innerHTML = carrinhoItens.innerHTML;
+  } else {
+    // Limpa o conteúdo de favMobile quando openFav é fechado
+    favMobile.innerHTML = "";
+  }
 };
 
-
-
 function logout() {
-    // Remove o nome do usuário do localStorage
-    localStorage.removeItem('nomeUsuario');
-    // Limpe outros dados de usuário, se houver
-    window.location.href = "index.html";
+  // Remove o nome do usuário do localStorage
+  localStorage.removeItem("nomeUsuario");
+  // Limpe outros dados de usuário, se houver
+  window.location.href = "index.html";
 }
-
-
 
 let popupVisivel = false;
 
 function mostrarOcultarPopup() {
-    const popupElement = document.getElementById('popup');
+  const popupElement = document.getElementById("popup");
 
-    popupVisivel = !popupVisivel;
-    popupElement.classList.toggle('show', popupVisivel);
+  popupVisivel = !popupVisivel;
+  popupElement.classList.toggle("show", popupVisivel);
 
-    if (window.innerWidth <= 975) {
-        popupElement.style.display = "none"
-    }
+  if (window.innerWidth <= 975) {
+    popupElement.style.display = "none";
+  }
 }
-
-
-
 
 //CARRINHO
 
 document.addEventListener("DOMContentLoaded", function () {
-    const carrinhoItens = JSON.parse(localStorage.getItem("carrinho")) || [];
-    const itensLista = document.getElementById("itens-lista");
-    const precoTotalSpan = document.getElementById("preco-total");
-    const contFavoritosSpan = document.getElementById("cont-favoritos");
-    const limparCarrinhoBtn = document.querySelector(".car");
+  const carrinhoItens = JSON.parse(localStorage.getItem("carrinho")) || [];
+  const itensLista = document.getElementById("itens-lista");
+  const precoTotalSpan = document.getElementById("preco-total");
+  const contFavoritosSpan = document.getElementById("cont-favoritos");
+  const limparCarrinhoBtn = document.querySelector(".car");
 
+  function toggleFavoritos() {
+    const carrinhoItensDiv = document.getElementById("carrinho-itens");
+    carrinhoItensDiv.style.display =
+      carrinhoItensDiv.style.display === "none" ? "block" : "none";
+  }
 
-    function toggleFavoritos() {
-        const carrinhoItensDiv = document.getElementById("carrinho-itens");
-        carrinhoItensDiv.style.display = carrinhoItensDiv.style.display === "none" ? "block" : "none";
-    }
-
-
-    document.getElementById("favoritos-link").addEventListener("click", function (event) {
-        event.preventDefault();
-        toggleFavoritos();
+  document
+    .getElementById("favoritos-link")
+    .addEventListener("click", function (event) {
+      event.preventDefault();
+      toggleFavoritos();
+      favMobile.innerHTML = carrinhoItens.innerHTML;
+      toggleMenu();
+      toggleMobile();
+      toggleFav();
     });
 
+  function limparCarrinho() {
+    carrinhoItens.length = 0;
+    atualizarCarrinho();
+    salvarCarrinhoNoLocalStorage();
+    resetProdutinhos();
+  }
 
+  function atualizarCarrinho() {
+    itensLista.innerHTML = "";
+    let total = 0;
 
-    function limparCarrinho() {
-        carrinhoItens.length = 0;
-        atualizarCarrinho();
-        salvarCarrinhoNoLocalStorage();
-        resetProdutinhos();
-
-    }
-
-    function atualizarCarrinho() {
-        itensLista.innerHTML = "";
-        let total = 0;
-
-        carrinhoItens.forEach(item => {
-            const li = document.createElement("li");
-            li.innerHTML = `
-                <div class="item-carrinho">
-                    <span>${item.nome}</span>
-                    <br>
-                    <button class="remove" onclick="removeCarrinho('${item.nome}')">-</button>
-                    <span class="quantity">${item.quantidade}</span>
-                    <button class="add" onclick="addMaisUm('${item.nome}')">+</button>
-                    <span class="preco-total">R$${(item.preco * item.quantidade).toFixed(2)}</span>
-                </div>
-            `;
-            itensLista.appendChild(li);
-            total += item.preco * item.quantidade;
-        });
-
-        precoTotalSpan.textContent = `Valor Total: R$${total.toFixed(2)}`;
-        contFavoritosSpan.textContent = carrinhoItens.reduce((acc, item) => acc + item.quantidade, 0).toString();
-        limparCarrinhoBtn.style.display = "block";
-
-    }
-
-    function addToCart(nome, preco) {
-        const existingItem = carrinhoItens.find(item => item.nome === nome);
-
-        if (existingItem) {
-            existingItem.quantidade++;
-        } else {
-            carrinhoItens.push({ nome, preco, quantidade: 1 });
-        }
-
-        atualizarCarrinho();
-        salvarCarrinhoNoLocalStorage();
-        resetProdutinhos();
-    }
-
-    window.removeCarrinho = function (nome) {
-        const index = carrinhoItens.findIndex(item => item.nome === nome);
-
-        if (index !== -1) {
-            const item = carrinhoItens[index];
-            item.quantidade--;
-
-            if (item.quantidade === 0) {
-                const liToRemove = document.querySelector(`#li-${item.nome}`);
-                if (liToRemove) {
-                    liToRemove.remove();
-                }
-
-                carrinhoItens.splice(index, 1);
-            }
-        }
-
-        atualizarCarrinho();
-        salvarCarrinhoNoLocalStorage();
-        resetProdutinhos();
-
-    };
-
-    window.addMaisUm = function (nome) {
-        const item = carrinhoItens.find(item => item.nome === nome);
-
-        if (item) {
-            item.quantidade++;
-        }
-
-        atualizarCarrinho();
-        salvarCarrinhoNoLocalStorage();
-        resetProdutinhos();
-    };
-
-    function resetProdutinhos() {
-        const produtinhosBtns = document.querySelectorAll(".produtinhos");
-        produtinhosBtns.forEach(btn => {
-            const coracaoVazio = btn.querySelector(".icon-coracao");
-            const coracaoPintado = btn.querySelector(".icon-coracaoP");
-            const valorInicialElement = btn.nextElementSibling; // assume que p.espec-coracao é irmão do botão
-            const produtoNome = btn.getAttribute("data-produto-nome");
-            const produtoNoCarrinho = carrinhoItens.find(item => item.nome === produtoNome);
-
-            coracaoVazio.style.display = produtoNoCarrinho ? "none" : "block";
-            coracaoPintado.style.display = produtoNoCarrinho ? "block" : "none";
-
-            // Atualiza o valor inicial com base no estado do coração
-            if (produtoNoCarrinho) {
-                // Se o produto está no carrinho, verifica se já foi incrementado nesta atualização
-                const valorAtual = parseInt(valorInicialElement.textContent);
-                const valorInicial = parseInt(valorInicialElement.getAttribute("data-valor-inicial"));
-
-                if (valorAtual === valorInicial) {
-                    // Incrementa uma unidade apenas se ainda não foi incrementado
-                    valorInicialElement.textContent = (valorAtual + 1).toString();
-                }
-            } else {
-                // Se o produto não está no carrinho, restaura o valor inicial do HTML
-                const valorInicial = parseInt(valorInicialElement.getAttribute("data-valor-inicial"));
-                valorInicialElement.textContent = valorInicial.toString();
-            }
-        });
-
-        // Atualiza a quantidade de itens no carrinho
-        contFavoritosSpan.textContent = carrinhoItens.reduce((acc, item) => acc + item.quantidade, 0).toString();
-    }
-
-
-
-
-
-
-    const produtinhoBtns = document.querySelectorAll(".produtinhos");
-    produtinhoBtns.forEach(produtinhoBtn => {
-        produtinhoBtn.addEventListener("click", function () {
-            const nome = this.getAttribute("data-produto-nome");
-            const preco = parseFloat(this.getAttribute("data-preco"));
-            const produtoNoCarrinho = carrinhoItens.find(item => item.nome === nome);
-
-            if (!produtoNoCarrinho) {
-                addToCart(nome, preco);
-            } else {
-                removeCarrinho(nome);
-            }
-
-            resetProdutinhos();
-        });
+    carrinhoItens.forEach((item) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <div class="item-carrinho">
+            <span>${item.nome}</span>
+            <br>
+            <button class="remove" onclick="removeCarrinho('${
+              item.nome
+            }')">-</button>
+            <span class="quantity">${item.quantidade}</span>
+            <button class="add" onclick="addMaisUm('${item.nome}')">+</button>
+            <span class="preco-total">R$${(
+              item.preco * item.quantidade
+            ).toFixed(2)}</span>
+        </div>
+    `;
+      itensLista.appendChild(li);
+      total += item.preco * item.quantidade;
     });
 
-    const favoritosBtn = document.getElementById("favoritos");
-    favoritosBtn.addEventListener("click", toggleFavoritos);
+    precoTotalSpan.textContent = `Valor Total: R$${total.toFixed(2)}`;
+    contFavoritosSpan.textContent = carrinhoItens
+      .reduce((acc, item) => acc + item.quantidade, 0)
+      .toString();
+    limparCarrinhoBtn.style.display = "block";
 
-    limparCarrinhoBtn.addEventListener("click", function () {
-        limparCarrinho();
+    // Passo 1: Adicionar evento de clique aos botões "Adicionar ao Carrinho"
+    const botoesAdicionarCarrinho = document.querySelectorAll(".add");
+    botoesAdicionarCarrinho.forEach((botao) => {
+      botao.addEventListener("click", function () {
+        // Passo 2: Chamar a função para atualizar os itens do carrinho na versão mobile
+        atualizarItensCarrinhoMobile();
+        
+      });
     });
 
-    function salvarCarrinhoNoLocalStorage() {
-        localStorage.setItem("carrinho", JSON.stringify(carrinhoItens));
+    // Passo 3: Função para atualizar os itens do carrinho na versão mobile
+    function atualizarItensCarrinhoMobile() {
+      const carrinhoMobile = document.getElementById("carrinho-itens");
+      const itensListaMobile = document.getElementById("itens-lista");
+
+      // Obtenha os itens do carrinho do seu aplicativo
+      const itensCarrinho = obterItensCarrinho();
+
+      // Limpe os itens do carrinho na versão mobile
+      itensListaMobile.innerHTML = "";
+
+      // Percorra os itens do carrinho e crie os elementos correspondentes na versão mobile
+      for (const item of itensCarrinho) {
+        const itemElement = document.createElement("li");
+        itemElement.textContent = item.nome;
+        itensListaMobile.appendChild(itemElement);
+      }
+
+      // Exiba o carrinho na versão mobile, se necessário
+      carrinhoMobile.style.display = "block";
+    }
+  }
+
+  function addToCart(nome, preco) {
+    const existingItem = carrinhoItens.find((item) => item.nome === nome);
+
+    if (existingItem) {
+      existingItem.quantidade++;
+    } else {
+      carrinhoItens.push({ nome, preco, quantidade: 1 });
     }
 
     atualizarCarrinho();
+    salvarCarrinhoNoLocalStorage();
     resetProdutinhos();
+  }
 
-
-});
-
-// MOBILE
-document.addEventListener("DOMContentLoaded", function () {
-    const carrinhoItensMobile = JSON.parse(localStorage.getItem("carrinho")) || [];
-    const itensListaMobile = document.getElementById("itens-mobile");
-    const precoTotalSpanMobile = document.getElementById("preco-totalMobile");
-    const limparCarrinhoBtnMobile = document.querySelector(".carMobile");
-    const contFavoritosSpanMobile = document.getElementById("cont-favoritos");
-
-
-
-
-    function limparCarrinhoMobile() {
-        carrinhoItensMobile.length = 0;
-        atualizarCarrinhoMobile();
-        salvarCarrinhoNoLocalStorageMobile();
-        resetProdutinhosMobile();
-
-    }
-
-    function atualizarCarrinhoMobile() {
-        itensListaMobile.innerHTML = "";
-        let total = 0;
-
-        carrinhoItensMobile.forEach(item => {
-            const liMobile = document.createElement("li");
-            liMobile.innerHTML = `
-                <div class="item-carrinho">
-                    <span>${item.nome}</span>
-                    <br>
-                    <button class="remove" onclick="removeCarrinho('${item.nome}')">-</button>
-                    <span class="quantity">${item.quantidade}</span>
-                    <button class="add" onclick="addMaisUm('${item.nome}')">+</button>
-                    <span class="preco-totalMobile">R$${(item.preco * item.quantidade).toFixed(2)}</span>
-                </div>
-            `;
-            itensListaMobile.appendChild(liMobile);
-            total += item.preco * item.quantidade;
-        });
-
-        precoTotalSpanMobile.textContent = `Valor Total: R$${total.toFixed(2)}`;
-        contFavoritosSpanMobile.textContent = carrinhoItensMobile.reduce((acc, item) => acc + item.quantidade, 0).toString();
-        limparCarrinhoBtnMobile.style.display = "block";
-
-    }
-
-    function addToCartMobile(nome, preco) {
-        const existingItem = carrinhoItensMobile.find(item => item.nome === nome);
-
-        if (existingItem) {
-            existingItem.quantidade++;
-        } else {
-            carrinhoItensMobile.push({ nome, preco, quantidade: 1 });
+  window.removeCarrinho = function (nome) {
+    const index = carrinhoItens.findIndex((item) => item.nome === nome);
+  
+    if (index !== -1) {
+      const item = carrinhoItens[index];
+      item.quantidade--;
+  
+      if (item.quantidade === 0) {
+        const liToRemove = document.querySelector(`#li-${item.nome}`);
+        if (liToRemove) {
+          liToRemove.remove();
         }
-
-        atualizarCarrinhoMobile();
-        salvarCarrinhoNoLocalStorageMobile();
-        resetProdutinhosMobile();
+  
+        carrinhoItens.splice(index, 1);
+      }
     }
+  
+    
+    atualizarCarrinho();
+    salvarCarrinhoNoLocalStorage();
+    resetProdutinhos();
+  
+    
+    favMobile.innerHTML = carrinhoItens.innerHTML;
+    toggleMenu();
+    toggleMobile();
+    toggleFav();
+  };
+  
 
-    window.removeCarrinhoMobile = function (nome) {
-        const index = carrinhoItensMobile.findIndex(item => item.nome === nome);
-
-        if (index !== -1) {
-            const item = carrinhoItensMobile[index];
-            item.quantidade--;
-
-            if (item.quantidade === 0) {
-                const liToRemove = document.querySelector(`#li-${item.nome}`);
-                if (liToRemove) {
-                    liToRemove.remove();
-                }
-
-                carrinhoItensMobile.splice(index, 1);
-            }
-        }
-
-        atualizarCarrinhoMobile();
-        salvarCarrinhoNoLocalStorageMobile();
-        resetProdutinhosMobile();
-
-    };
-
-    window.addMaisUmMobile = function (nome) {
-        const item = carrinhoItensMobile.find(item => item.nome === nome);
-
-        if (item) {
-            item.quantidade++;
-        }
-
-        atualizarCarrinhoMobile();
-        salvarCarrinhoNoLocalStorageMobile();
-        resetProdutinhosMobile();
-    };
-
-    function resetProdutinhosMobile() {
-        const produtinhosBtnsMobile = document.querySelectorAll(".produtinhos");
-        produtinhosBtnsMobile.forEach(btn => {
-            const coracaoVazio = btn.querySelector(".icon-coracao");
-            const coracaoPintado = btn.querySelector(".icon-coracaoP");
-            const valorInicialElement = btn.nextElementSibling; // assume que p.espec-coracao é irmão do botão
-            const produtoNome = btn.getAttribute("data-produto-nome");
-            const produtoNoCarrinho = carrinhoItensMobile.find(item => item.nome === produtoNome);
-
-            coracaoVazio.style.display = produtoNoCarrinho ? "none" : "block";
-            coracaoPintado.style.display = produtoNoCarrinho ? "block" : "none";
-
-            // Atualiza o valor inicial com base no estado do coração
-            if (produtoNoCarrinho) {
-                // Se o produto está no carrinho, verifica se já foi incrementado nesta atualização
-                const valorAtual = parseInt(valorInicialElement.textContent);
-                const valorInicial = parseInt(valorInicialElement.getAttribute("data-valor-inicial"));
-
-                if (valorAtual === valorInicial) {
-                    // Incrementa uma unidade apenas se ainda não foi incrementado
-                    valorInicialElement.textContent = (valorAtual + 1).toString();
-                }
-            } else {
-                // Se o produto não está no carrinho, restaura o valor inicial do HTML
-                const valorInicial = parseInt(valorInicialElement.getAttribute("data-valor-inicial"));
-                valorInicialElement.textContent = valorInicial.toString();
-            }
-        });
-
-        // Atualiza a quantidade de itens no carrinho
-        contFavoritosSpanMobile.textContent = carrinhoItensMobile.reduce((acc, item) => acc + item.quantidade, 0).toString();
+  window.addMaisUm = function (nome) {
+    const item = carrinhoItens.find((item) => item.nome === nome);
+  
+    if (item) {
+      item.quantidade++;
     }
+  
+    
+    atualizarCarrinho();
+    salvarCarrinhoNoLocalStorage();
+    resetProdutinhos();
+  
+   
+    favMobile.innerHTML = carrinhoItens.innerHTML;
+    toggleMenu();
+    toggleMobile();
+    toggleFav();
+  };
 
+  function resetProdutinhos() {
+    const produtinhosBtns = document.querySelectorAll(".produtinhos");
+    produtinhosBtns.forEach((btn) => {
+      const coracaoVazio = btn.querySelector(".icon-coracao");
+      const coracaoPintado = btn.querySelector(".icon-coracaoP");
+      const valorInicialElement = btn.nextElementSibling; // assume que p.espec-coracao é irmão do botão
+      const produtoNome = btn.getAttribute("data-produto-nome");
+      const produtoNoCarrinho = carrinhoItens.find(
+        (item) => item.nome === produtoNome
+      );
 
+      coracaoVazio.style.display = produtoNoCarrinho ? "none" : "block";
+      coracaoPintado.style.display = produtoNoCarrinho ? "block" : "none";
 
+      // Atualiza o valor inicial com base no estado do coração
+      if (produtoNoCarrinho) {
+        // Se o produto está no carrinho, verifica se já foi incrementado nesta atualização
+        const valorAtual = parseInt(valorInicialElement.textContent);
+        const valorInicial = parseInt(
+          valorInicialElement.getAttribute("data-valor-inicial")
+        );
 
-
-
-    const produtinhoBtns = document.querySelectorAll(".produtinhos");
-    produtinhoBtns.forEach(produtinhoBtn => {
-        produtinhoBtn.addEventListener("click", function () {
-            const nome = this.getAttribute("data-produto-nome");
-            const preco = parseFloat(this.getAttribute("data-preco"));
-            const produtoNoCarrinho = carrinhoItens.find(item => item.nome === nome);
-
-            if (!produtoNoCarrinho) {
-                addToCartMobile(nome, preco);
-            } else {
-                removeCarrinhoMobile(nome);
-            }
-
-            resetProdutinhosMobile();
-        });
+        if (valorAtual === valorInicial) {
+          // Incrementa uma unidade apenas se ainda não foi incrementado
+          valorInicialElement.textContent = (valorAtual + 1).toString();
+        }
+      } else {
+        // Se o produto não está no carrinho, restaura o valor inicial do HTML
+        const valorInicial = parseInt(
+          valorInicialElement.getAttribute("data-valor-inicial")
+        );
+        valorInicialElement.textContent = valorInicial.toString();
+      }
     });
 
-    const favoritosBtn = document.getElementById("favoritos");
-    favoritosBtn.addEventListener("click", toggleFavoritos);
+    // Atualiza a quantidade de itens no carrinho
+    contFavoritosSpan.textContent = carrinhoItens
+      .reduce((acc, item) => acc + item.quantidade, 0)
+      .toString();
+  }
 
-    limparCarrinhoBtnMobile.addEventListener("click", function () {
-        limparCarrinhoMobile();
+  const produtinhoBtns = document.querySelectorAll(".produtinhos");
+  produtinhoBtns.forEach((produtinhoBtn) => {
+    produtinhoBtn.addEventListener("click", function () {
+      const nome = this.getAttribute("data-produto-nome");
+      const preco = parseFloat(this.getAttribute("data-preco"));
+      const produtoNoCarrinho = carrinhoItens.find(
+        (item) => item.nome === nome
+      );
+
+      if (!produtoNoCarrinho) {
+        addToCart(nome, preco);
+      } else {
+        removeCarrinho(nome);
+      }
+
+      resetProdutinhos();
     });
+  });
 
-    function salvarCarrinhoNoLocalStorageMobile() {
-        localStorage.setItem("carrinho", JSON.stringify(carrinhoItens));
-    }
+  const favoritosBtn = document.getElementById("favoritos");
+  favoritosBtn.addEventListener("click", toggleFavoritos);
 
-    atualizarCarrinhoMobile();
-    resetProdutinhosMobile();
+  limparCarrinhoBtn.addEventListener("click", function () {
+    limparCarrinho();
+  });
 
+  function salvarCarrinhoNoLocalStorage() {
+    localStorage.setItem("carrinho", JSON.stringify(carrinhoItens));
+  }
 
+  atualizarCarrinho();
+  resetProdutinhos();
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

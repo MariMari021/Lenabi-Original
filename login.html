@@ -46,7 +46,7 @@
             </div>
         </div>
         <nav class="login-cadastro">
-            
+
         </nav>
         <nav class="navbar">
             <nav>
@@ -66,12 +66,45 @@
                 </div>
             </nav>
         </nav>
+        <nav class="navbarUser">
+            <nav>
+                <div id="popupMobile">
+                    <div class="popupMobileAll">
+                        <img src="img-interface/Group 20.svg" alt="">
+                        <span id="conteudoMobile"></span>
+                        <span id="emailMobile"></span>
+                        <br>
+
+                    </div>
+                    <button class="botaoSairMobile" onclick="logout()">
+                        <p>Sair</p>
+                        <i id="logoutButtonMobile" class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
+                </div>
+
+            </nav>
+        </nav>
+        <nav class="navbarFav">
+            <nav>
+                <div id="favMobile">
+
+                </div>
+
+            </nav>
+        </nav>
+        </div>
     </header>
     <main id="main-login">
+        <div id="idiomas">
+            <button onclick="Escolher('ptbr')"><img src="img-interface/bandeira-do-brasil 1.png" alt="brasil"></button>
+            <button onclick="Escolher('en')"><img src="img-interface/bandeira-estados-unidos 1.png" alt="estados unidos da america"></button>
+            <button onclick="Escolher('es')"><img src="img-interface/bandeira-da-espanha 1.png" alt="espanha"></button>
+        </div>
+    
         <div class="box">
             <div class="conteudo-login">
                 <div class="titulo">
-                    <h3><span>Bem-vindo </span>de volta!</h3>
+                    <h3 id="Bem"><p id="Vindo">Bem-vindo</p>de volta!</h3>
                     <div class="linha-titulo"></div>
                 </div>
                 <div class="campo">
@@ -89,12 +122,13 @@
                 </div>
                 <div class="outros-registros">
                     <button id="loginButton">Entrar</button>
-                    <p>Não tem conta? <a href="cadastro.html"><span>Registre-se!</span></a></p>
+                    <p id="registrar">Não tem conta? <a href="cadastro.html"><span>Registre-se!</span></a></p>
                 </div>
                 <div class="login-sociais">
                     <div class="linha-sociais"></div>
-                    <p>ou</p>
-
+                    <p id="ou">ou</p>
+                    <div class="line-icons"></div>
+                    <div class="line-icons2"></div>
                     <div class="icons">
                         <img src="img-interface/Group 9.svg" alt="">
                         <img src="img-interface/Group 10.svg" alt="">
@@ -106,6 +140,7 @@
             <img class="img-login" src="img-interface/valentin-antonini-0eTLk6dA_Ds-unsplash 1.png" alt="">
         </div>
     </main>
+
     <footer id="footer">
         <div class="container-footer">
             <nav>
@@ -138,9 +173,9 @@
         </div>
     </footer>
 
-    <script src="user.js"></script>
 
     <script type="text/javascript">
+    
 
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -287,6 +322,8 @@
                     console.error("Erro ao buscar produtos:", error);
                 });
         }
+
+
 
     </script>
     <script src="user.js"></script>
