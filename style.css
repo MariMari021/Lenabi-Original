@@ -75,7 +75,7 @@ body {
   padding: 35px;
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 999;
+  z-index: 888;
   height: 379px;
   width: 323px;
   background: #3c2520;
@@ -2424,6 +2424,77 @@ input::-webkit-inner-spin-button {
 
 @media screen and (max-width: 530px) {
 
+  /* promocional */
+  .popupSorteio {
+    border-radius: 15px;
+    position: fixed;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 24px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 888;
+    height: 337px;
+    width: 267px;
+    background: #3c2520;
+    color: #e3c7ba;
+    font-family: 'Poppins-regular';
+    box-shadow: 2px 2px 2px #e3cfbc;
+  }
+
+  .popupSorteio li {
+    margin-top: 7px;
+    font-size: 15px;
+}
+
+.popupSorteio h2 {
+  font-family: 'Young-serif';
+  font-size: 20px;
+}
+
+.popupSorteio h2 span {
+  font-family: 'Poppins-bold';
+  font-size: 19px;
+}
+
+.popupSorteio button {
+  background-color: #f8f1ee;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 22px;
+  cursor: pointer;
+  color: #3c2520;
+  font-family: 'Young-serif';
+  margin: 16px 0px 11px 19px;
+}
+
+.circleSorteio {
+  position: fixed;
+  bottom: 41px;
+  right: 16px;
+  width: 45px;
+  height: 45px;
+  background-color: #4f250d;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.fa-gift:before {
+  bottom: 12px;
+  font-weight: 900;
+  left: 11.3px;
+  position: absolute;
+  font-size: 22px;
+  color: #f8f1ee;
+
+}
+
+
+
+/* fim promocional */
 
   .usuario-logado {
     display: none;
@@ -3101,6 +3172,79 @@ input::-webkit-inner-spin-button {
 }
 
 @media screen and (max-width: 767px) and (min-width:529px) {
+    /* promocional */
+    .popupSorteio {
+      border-radius: 15px;
+      position: fixed;
+      top: 56%;
+      left: 50%;  
+      transform: translate(-50%, -50%);
+      padding: 24px;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 888;
+      height: 337px;
+      width: 267px;
+      background: #3c2520;
+      color: #e3c7ba;
+      font-family: 'Poppins-regular';
+      box-shadow: 2px 2px 2px #e3cfbc;
+    }
+  
+    .popupSorteio li {
+      margin-top: 7px;
+      font-size: 15px;
+  }
+  
+  .popupSorteio h2 {
+    font-family: 'Young-serif';
+    font-size: 20px;
+  }
+  
+  .popupSorteio h2 span {
+    font-family: 'Poppins-bold';
+    font-size: 19px;
+  }
+  
+  .popupSorteio button {
+    background-color: #f8f1ee;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 22px;
+    cursor: pointer;
+    color: #3c2520;
+    font-family: 'Young-serif';
+    margin: 16px 0px 11px 19px;
+  }
+  
+  .circleSorteio {
+    position: fixed;
+    bottom: 41px;
+    right: 16px;
+    width: 45px;
+    height: 45px;
+    background-color: #4f250d;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+  .fa-gift:before {
+    bottom: 12px;
+    font-weight: 900;
+    left: 11.3px;
+    position: absolute;
+    font-size: 22px;
+    color: #f8f1ee;
+  
+  }
+  
+  
+  
+  /* fim promocional */
+
+
   .botaoMenu {
     display: flex;
   }
@@ -3791,6 +3935,79 @@ input::-webkit-inner-spin-button {
 
 
 @media screen and (min-width:768px) and (max-width:974px) {
+  /* promocional */
+  .popupSorteio {
+    border-radius: 15px;
+    position: fixed;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 24px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 888;
+    height: 337px;
+    width: 267px;
+    background: #3c2520;
+    color: #e3c7ba;
+    font-family: 'Poppins-regular';
+    box-shadow: 2px 2px 2px #e3cfbc;
+  }
+
+  .popupSorteio li {
+    margin-top: 7px;
+    font-size: 15px;
+}
+
+.popupSorteio h2 {
+  font-family: 'Young-serif';
+  font-size: 20px;
+}
+
+.popupSorteio h2 span {
+  font-family: 'Poppins-bold';
+  font-size: 19px;
+}
+
+.popupSorteio button {
+  background-color: #f8f1ee;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 22px;
+  cursor: pointer;
+  color: #3c2520;
+  font-family: 'Young-serif';
+  margin: 16px 0px 11px 19px;
+}
+
+.circleSorteio {
+  position: fixed;
+  bottom: 41px;
+  right: 16px;
+  width: 45px;
+  height: 45px;
+  background-color: #4f250d;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.fa-gift:before {
+  bottom: 12px;
+  font-weight: 900;
+  left: 11.3px;
+  position: absolute;
+  font-size: 22px;
+  color: #f8f1ee;
+
+}
+
+
+
+/* fim promocional */
+
+
   .botaoMenu {
     display: flex;
   }
@@ -4350,13 +4567,13 @@ input::-webkit-inner-spin-button {
 }
 
 
-::-webkit-scrollbar{
+#carrinho-itens::-webkit-scrollbar{
   border-radius: 10px;
   background-color: transparent;
   width: 14px;
 }
 
-::-webkit-scrollbar-thumb{
+#carrinho-itens::-webkit-scrollbar-thumb{
   background-color: #F8F1EE;
   border-radius: 10px;
 }

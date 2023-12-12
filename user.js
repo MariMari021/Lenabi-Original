@@ -181,9 +181,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function limparCarrinho() {
     carrinhoItens.length = 0;
+    carrinhoItens.textContent = ""
+    const favvv = document.getElementById("favMobile")
+    favvv.innerHTML = ""
+    localStorage.clear();
     atualizarCarrinho();
-    salvarCarrinhoNoLocalStorage();
+    // salvarCarrinhoNoLocalStorage();
     resetProdutinhos();
+    favMobile.innerHTML = carrinhoItens.innerHTML;
+    favMobile.innerHTML = ""
+    toggleMenu();
+    toggleMobile();
+    toggleFav();
+
   }
 
   function atualizarCarrinho() {
@@ -196,14 +206,13 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="item-carrinho">
             <span>${item.nome}</span>
             <br>
-            <button class="remove" onclick="removeCarrinho('${
-              item.nome
-            }')">-</button>
+            <button class="remove" onclick="removeCarrinho('${item.nome
+        }')">-</button>
             <span class="quantity">${item.quantidade}</span>
             <button class="add" onclick="addMaisUm('${item.nome}')">+</button>
             <span class="preco-total">R$${(
-              item.preco * item.quantidade
-            ).toFixed(2)}</span>
+          item.preco * item.quantidade
+        ).toFixed(2)}</span>
         </div>
     `;
       itensLista.appendChild(li);
@@ -222,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function () {
       botao.addEventListener("click", function () {
         // Passo 2: Chamar a função para atualizar os itens do carrinho na versão mobile
         atualizarItensCarrinhoMobile();
-        
+
       });
     });
 
@@ -265,47 +274,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.removeCarrinho = function (nome) {
     const index = carrinhoItens.findIndex((item) => item.nome === nome);
-  
+
     if (index !== -1) {
       const item = carrinhoItens[index];
       item.quantidade--;
-  
+
       if (item.quantidade === 0) {
         const liToRemove = document.querySelector(`#li-${item.nome}`);
         if (liToRemove) {
           liToRemove.remove();
         }
-  
+
         carrinhoItens.splice(index, 1);
       }
     }
-  
-    
+
+
     atualizarCarrinho();
     salvarCarrinhoNoLocalStorage();
     resetProdutinhos();
-  
-    
+
+
     favMobile.innerHTML = carrinhoItens.innerHTML;
     toggleMenu();
     toggleMobile();
     toggleFav();
   };
-  
+
 
   window.addMaisUm = function (nome) {
     const item = carrinhoItens.find((item) => item.nome === nome);
-  
+
     if (item) {
       item.quantidade++;
     }
-  
-    
+
+
     atualizarCarrinho();
     salvarCarrinhoNoLocalStorage();
     resetProdutinhos();
-  
-   
+
+
     favMobile.innerHTML = carrinhoItens.innerHTML;
     toggleMenu();
     toggleMobile();
