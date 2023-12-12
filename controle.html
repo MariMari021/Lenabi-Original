@@ -2,55 +2,112 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel de Controle - Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a2288264db.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="controle.css">
+    <link rel="shortcut icon" href="img-interface/lenabi 1.png" type="image/x-icon">
 </head>
-<body>
-    <h1>Painel de Controle - Admin</h1>
 
-    <!-- Lista de Usuários -->
-    <ul id="listaUsuarios"></ul>
+<body>
+
+    <header id="header-login">
+        <div class="container container-login">
+            <a href="index.html">
+                <div class="logo">
+                    <img src="img-interface/lenabi 1.png" alt="borboleta voando dentro de um livro">
+                    <h2>LeNabi</h2>
+                </div>
+            </a>
+            <h3>Acesso Restrito</h3>
+
+
+        </div>
+        <nav class="login-cadastro">
+
+        </nav>
+        <nav class="navbar">
+            <nav>
+            </nav>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container-controle">
+            <div class="texto-controle">
+                <h1>Painel de Controle - Admin</h1>
+                <p>Administrar os cadastros com precisão por meio do painel, moldando o futuro literário com um número
+                    crescente de leitores.</p>
+            </div>
+            <div class="controle-email">
+                <!-- Lista de Usuários -->
+                <ul id="listaUsuarios"></ul>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container-footer">
+            <h3>@Copyright LeNabi</h3>
+        </div>
+    </footer>
+
 
     <script>
-        // Função para carregar e exibir a lista de usuários
         function carregarUsuarios() {
+            // Função para carregar e exibir a lista de usuários
             const listaUsuariosElement = document.getElementById("listaUsuarios");
             listaUsuariosElement.innerHTML = "";
-    
+
             const usuariosCadastrados = JSON.parse(localStorage.getItem('usuarios')) || [];
-    
+
             usuariosCadastrados.forEach((usuario, index) => {
                 const liElement = document.createElement("li");
-                liElement.textContent = `${usuario.nome} (${usuario.email})`;
-    
+                liElement.innerHTML = `<strong>${usuario.nome}</strong> (${usuario.email})`;
+
                 const botaoExcluir = document.createElement("button");
-                botaoExcluir.textContent = "Excluir";
+                botaoExcluir.innerHTML = '<i class="fa-solid fa-trash"></i>';
                 botaoExcluir.addEventListener("click", () => excluirUsuario(index));
-    
+
                 liElement.appendChild(botaoExcluir);
                 listaUsuariosElement.appendChild(liElement);
-            }); // Remova o parêntese extra aqui
+
+                // Adiciona ou remove a classe 'hovered' no li e no button
+                liElement.addEventListener("mouseover", () => {
+                    liElement.classList.add("hovered");
+                    botaoExcluir.classList.add("hovered");
+                });
+
+                liElement.addEventListener("mouseout", () => {
+                    liElement.classList.remove("hovered");
+                    botaoExcluir.classList.remove("hovered");
+                });
+            });
         }
-    
         // Função para excluir um usuário
         function excluirUsuario(index) {
             const usuariosCadastrados = JSON.parse(localStorage.getItem('usuarios')) || [];
-    
+
             // Remove o usuário da lista
             usuariosCadastrados.splice(index, 1);
-    
+
             // Atualiza o localStorage com a lista atualizada de usuários
             localStorage.setItem('usuarios', JSON.stringify(usuariosCadastrados));
-    
+
             // Recarrega a lista de usuários na interface
             carregarUsuarios();
         }
-    
+
         // Chama a função para carregar a lista de usuários ao carregar a página
         carregarUsuarios();
     </script>
-    
+
 </body>
+
 </html>

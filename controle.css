@@ -1,0 +1,121 @@
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #F8F1EE;
+  }
+  
+  @font-face {
+    font-family: 'Young-serif';
+    src: url(font/YoungSerif-Regular.ttf);
+  }
+  
+  @font-face {
+    font-family: 'Poppins-regular';
+    src: url(font/Poppins-Regular.ttf);
+  }
+  
+  @font-face {
+    font-family: 'Poppins-Semi';
+    src: url(font/Poppins-SemiBold.ttf);
+  }
+  
+  @font-face {
+    font-family: 'Poppins-medium';
+    src: url(font/Poppins-Medium.ttf);
+  }
+  
+  @font-face {
+    font-family: 'Poppins-bold';
+    src: url(font/Poppins-Bold.ttf);
+  }
+
+.container-login h3 {
+    font-family: 'Young-serif';
+    color: #3C2520;
+    font-weight: 600;
+}
+
+.container-login h3:hover {
+    color: #472d28;
+}
+
+.container-controle {
+    text-align: center;
+    margin: 5% 10% 2.5%;
+    min-height: 46.1vh;
+}
+
+.texto-controle h1 {
+    font-family: 'Young-serif';
+    color: #3C2520;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.texto-controle p {
+    font-family: 'Poppins-regular';
+    font-size: 16px;
+    color: #522318;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+#listaUsuarios {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+li {
+    font-family: 'Poppins-regular';
+    font-size: 16px;
+    min-width: 400px;
+    min-height: 90px;
+    margin-right: 70px;
+    border: solid #522318;
+    border-radius: 15px;
+    margin: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: 0 16px;
+    color: #472d28;
+    transition: .3s ease;
+}
+
+li button.hovered  {
+    background-color: #472d28;
+    color:#F8F1EE;
+}
+
+li.hovered {
+    background-color: #472d28;
+    color: #F8F1EE;
+}
+
+button {
+    background: transparent;
+    font-size: 18px;
+    color: #472d28;
+    
+}
+
+.container-footer h3 {
+    color: #E3CFBC;
+    font-family: 'Young-serif';
+    font-weight: 500;
+}
+

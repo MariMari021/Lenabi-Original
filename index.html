@@ -130,6 +130,22 @@
         </nav>
     </header>
     <main id="main">
+        <section id="sorteio">
+            <div class="sorteioCupons">
+                <div class="circleSorteio" onclick="openPopup()"><i class="fa-solid fa-gift"></i></div>
+                <div class="popupSorteio" id="popupSorteio">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <h2>Tente a sorte! <span>sorteie cupons promocionais</span>
+                    </h2>
+                    <ul>
+                        <li>  Cupons de desconto proporcionam economia imediata, tornando suas compras mais acessíveis.</li>
+                    </ul>
+                    <p>Clique no botão abaixo para participar do sorteio:</p>
+                    <button onclick="participarSorteio()">Participar do Sorteio</button>
+                    <div id="cupomResultado"></div>
+                </div>
+            </div>
+        </section>
         <section id="banner">
             <div class="app">
 
@@ -548,17 +564,49 @@
 
     <script>
 
-function Escolher(idioma) {
-    fetch(`texto_${idioma}.json`)
-        .then(resposta => resposta.json())
-        .then(texto => {
-            console.log("Valores do JSON:", texto);
+        
+function openPopup() {
+            document.getElementById("popupSorteio").style.display = "block";
+        }
 
-            document.getElementById('volUm').innerText = texto.volUm;
+        function closePopup() {
+            document.getElementById("popupSorteio").style.display = "none";
+        }
 
+        function participarSorteio() {
+    // Verifica se o usuário já participou do sorteio nesta sessão
+    const participouSorteio = localStorage.getItem("participouSorteio");
 
-    })
+    if (!participouSorteio) {
+        const cupons = [
+            "ROMANCE60",
+            "AVENTURA50",
+            "FICCAO45",
+            "SUSPENSE55",
+            "DRAMA40",
+            "COMEDIA30",
+            "ACAO35",
+            "FANTASIA25",
+            "TERROR50",
+            "HISTORIA55",
+            "MISTERIO45",
+            "NOVELA40"
+        ];
+
+        const cupomSorteado = cupons[Math.floor(Math.random() * cupons.length)];
+
+        document.getElementById("cupomResultado").innerHTML = `Seu cupom: ${cupomSorteado}`;
+
+        // Marca que o usuário participou do sorteio nesta sessão
+        localStorage.setItem("participouSorteio", "true");
+    }
 }
+
+// Limpar Local Storage ao recarregar a página (apenas para testes)
+window.onload = function () {
+    localStorage.removeItem("participouSorteio");
+};
+
 
 
 

@@ -44,6 +44,94 @@ body {
   color: #FFEFDF;
 }
 
+/* SORTEIO */
+.circleSorteio {
+  position: fixed;
+  bottom: 41px;
+  right: 80px;
+  width: 55px;
+  height: 55px;
+  background-color: #4f250d;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.fa-gift:before {
+  bottom: 15px;
+  font-weight: 900;
+  left: 15px;
+  position: absolute;
+  font-size: 25px;
+  color: #f8f1ee;
+}
+
+.popupSorteio {
+  border-radius: 15px;
+  position: fixed;
+  top: 60%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  padding: 35px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  height: 379px;
+  width: 323px;
+  background: #3c2520;
+  color: #e3c7ba;
+  font-family: 'Poppins-regular';
+  box-shadow: 2px 2px 2px #e3cfbc;
+}
+
+.popupSorteio h2{
+  font-family: 'Young-serif';
+}
+
+.popupSorteio h2 span{
+  font-family: 'Poppins-bold';
+  font-size: 22px;
+}
+
+.popupSorteio li{
+  margin-top: 7px;
+}
+
+.close {
+  position: absolute;
+  top: 2px;
+  right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.popupSorteio button {
+  background-color: #f8f1ee;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 22px;
+  cursor: pointer;
+  color: #3c2520;
+  font-family: 'Young-serif';
+  margin: 16px 0px 11px 34px;
+}
+
+
+.popupSorteio button:hover {
+  background-color: #b99b8d;
+  color: #f8f1ee;
+}
+
+#cupomResultado {
+  margin-top: 7px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 17px;
+  color: white;
+}
+/* FIM SORTEIO */
+
 /* favoritos */
 #carrinho-itens {
   position: absolute;
