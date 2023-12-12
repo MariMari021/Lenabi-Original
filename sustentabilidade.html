@@ -233,11 +233,14 @@
         let cardsSus = document.querySelectorAll(".card-sus");
         let stackAreaSus = document.querySelector(".stack-area-sus");
 
+        // função para girar cardões
         function rotateCardsSus() {
             let angle = 0;
             cardsSus.forEach((card) => {
+                // se o cartao tem a classe 'active', ele é movido para cima e girado
                 if (card.classList.contains("active")) {
                     card.style.transform = `translate(-50%, -120vh) rotate(-48deg)`;
+                    // se nao o cartao é girado em um ângulo específico
                 } else {
                     card.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
                     angle = angle - 10;
@@ -245,14 +248,18 @@
             });
         }
 
+        // função chamada para arrumar os cartões corretamente (posição inicial)
         rotateCardsSus();
 
+        // evento para detectar quando a pagina é rolada
         window.addEventListener("scroll", () => {
             let proportion = stackAreaSus.getBoundingClientRect().top / window.innerHeight;
+            // calcula a proporção da "stack-area-sus" que está visível na janela
             if (proportion <= 0) {
                 let n = cardsSus.length;
                 let index = Math.ceil((proportion * n) / 2)
                 index = Math.abs(index) - 1;
+                // se a proporção for menor ou igual a zero, significa que a "stack-area-sus" está visível, e a função ajusta as classes dos cartões para tornar alguns deles "ativos" e outros não.
                 for (let i = 0; i < n; i++) {
                     if (i <= index) {
                         cardsSus[i].classList.add("active")
@@ -260,6 +267,7 @@
                         cardsSus[i].classList.remove("active")
                     }
                 }
+                // chama a função rotateCardsSus() para aplicar as mudanças.
                 rotateCardsSus()
             }
         })
