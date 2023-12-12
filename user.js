@@ -162,6 +162,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const contFavoritosSpan = document.getElementById("cont-favoritos");
   const limparCarrinhoBtn = document.querySelector(".car");
 
+
+
   function toggleFavoritos() {
     const carrinhoItensDiv = document.getElementById("carrinho-itens");
     carrinhoItensDiv.style.display =
@@ -179,22 +181,23 @@ document.addEventListener("DOMContentLoaded", function () {
       toggleFav();
     });
 
-  function limparCarrinho() {
-    carrinhoItens.length = 0;
-    carrinhoItens.textContent = ""
-    const favvv = document.getElementById("favMobile")
-    favvv.innerHTML = ""
-    localStorage.clear();
-    atualizarCarrinho();
-    // salvarCarrinhoNoLocalStorage();
-    resetProdutinhos();
-    favMobile.innerHTML = carrinhoItens.innerHTML;
-    favMobile.innerHTML = ""
-    toggleMenu();
-    toggleMobile();
-    toggleFav();
+    window.limparCarrinho = function() {
+      carrinhoItens.length = 0;
+    
+      
+      atualizarCarrinho();
+      salvarCarrinhoNoLocalStorage();
+      resetProdutinhos();
+    
+      
+      favMobile.innerHTML = carrinhoItens.innerHTML;
+      toggleMenu();
+      toggleMobile();
+      toggleFav();
 
-  }
+      localStorage.clear()
+    };
+    
 
   function atualizarCarrinho() {
     itensLista.innerHTML = "";
@@ -206,13 +209,14 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="item-carrinho">
             <span>${item.nome}</span>
             <br>
-            <button class="remove" onclick="removeCarrinho('${item.nome
-        }')">-</button>
+            <button class="remove" onclick="removeCarrinho('${
+              item.nome
+            }')">-</button>
             <span class="quantity">${item.quantidade}</span>
             <button class="add" onclick="addMaisUm('${item.nome}')">+</button>
             <span class="preco-total">R$${(
-          item.preco * item.quantidade
-        ).toFixed(2)}</span>
+              item.preco * item.quantidade
+            ).toFixed(2)}</span>
         </div>
     `;
       itensLista.appendChild(li);
@@ -231,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
       botao.addEventListener("click", function () {
         // Passo 2: Chamar a função para atualizar os itens do carrinho na versão mobile
         atualizarItensCarrinhoMobile();
-
+        
       });
     });
 
@@ -255,6 +259,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Exiba o carrinho na versão mobile, se necessário
       carrinhoMobile.style.display = "block";
+    //   atualizarCarrinho()
+   
     }
   }
 
@@ -274,52 +280,53 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.removeCarrinho = function (nome) {
     const index = carrinhoItens.findIndex((item) => item.nome === nome);
-
+  
     if (index !== -1) {
       const item = carrinhoItens[index];
       item.quantidade--;
-
+  
       if (item.quantidade === 0) {
         const liToRemove = document.querySelector(`#li-${item.nome}`);
         if (liToRemove) {
           liToRemove.remove();
         }
-
+  
         carrinhoItens.splice(index, 1);
       }
     }
-
-
+  
+    
     atualizarCarrinho();
     salvarCarrinhoNoLocalStorage();
     resetProdutinhos();
-
-
+  
+    
     favMobile.innerHTML = carrinhoItens.innerHTML;
     toggleMenu();
     toggleMobile();
     toggleFav();
   };
-
+  
 
   window.addMaisUm = function (nome) {
     const item = carrinhoItens.find((item) => item.nome === nome);
-
+  
     if (item) {
       item.quantidade++;
     }
-
-
+  
+  
     atualizarCarrinho();
     salvarCarrinhoNoLocalStorage();
     resetProdutinhos();
-
-
+  
+   
     favMobile.innerHTML = carrinhoItens.innerHTML;
     toggleMenu();
     toggleMobile();
     toggleFav();
   };
+  
 
   function resetProdutinhos() {
     const produtinhosBtns = document.querySelectorAll(".produtinhos");
@@ -386,6 +393,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   limparCarrinhoBtn.addEventListener("click", function () {
     limparCarrinho();
+    localStorage.clear()
   });
 
   function salvarCarrinhoNoLocalStorage() {
@@ -395,7 +403,3 @@ document.addEventListener("DOMContentLoaded", function () {
   atualizarCarrinho();
   resetProdutinhos();
 });
-
-
-
-

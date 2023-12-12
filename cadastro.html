@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="areadebusca.css">
     <style>
-        #favoritos{
+        #favoritos {
             padding-left: 717px;
         }
     </style>
@@ -46,7 +46,7 @@
             </div>
         </div>
         <nav class="login-cadastro">
-            
+
         </nav>
         <nav class="navbar">
             <nav>
@@ -88,12 +88,12 @@
         <nav class="navbarFav">
             <nav>
                 <div id="favMobile">
-                 
+
                 </div>
 
             </nav>
         </nav>
-    </div>
+        </div>
     </header>
     <main id="main-cadastro">
         <!-- <div id="idiomas">
@@ -186,31 +186,31 @@
             </div>
         </div>
     </footer>
-    
+
     <script src="user.js"></script>
-    <script  type="text/javascript">
+    <script type="text/javascript">
 
-// function Escolher(idioma) {
-//     fetch(`texto_${idioma}.json`)
-//         .then(resposta => resposta.json())
-//         .then(texto => {
-//             console.log("Valores do JSON:", texto);
+        // function Escolher(idioma) {
+        //     fetch(`texto_${idioma}.json`)
+        //         .then(resposta => resposta.json())
+        //         .then(texto => {
+        //             console.log("Valores do JSON:", texto);
 
-//             // Define o conteúdo do span #Bem
-//             document.getElementById('tituCadastro').innerText = texto.tituCadastro;
-//             document.getElementById('nome').placeholder = texto.nome;
-//             document.getElementById('email').placeholder = texto.email;
-//             document.getElementById('telefone').placeholder = texto.telefone;
-//             document.getElementById('usuario').placeholder = texto.usuario;
-//             document.getElementById('senhaInput').placeholder = texto.senhaInput;
-//             document.getElementById('registrarButton').innerText = texto.registrarButton;
-//             document.getElementById('entrar').innerText = texto.entrar;
-//             document.getElementById('ou').innerText = texto.ou;
+        //             // Define o conteúdo do span #Bem
+        //             document.getElementById('tituCadastro').innerText = texto.tituCadastro;
+        //             document.getElementById('nome').placeholder = texto.nome;
+        //             document.getElementById('email').placeholder = texto.email;
+        //             document.getElementById('telefone').placeholder = texto.telefone;
+        //             document.getElementById('usuario').placeholder = texto.usuario;
+        //             document.getElementById('senhaInput').placeholder = texto.senhaInput;
+        //             document.getElementById('registrarButton').innerText = texto.registrarButton;
+        //             document.getElementById('entrar').innerText = texto.entrar;
+        //             document.getElementById('ou').innerText = texto.ou;
 
 
 
-//     })
-// }
+        //     })
+        // }
 
         document.addEventListener('DOMContentLoaded', function () {
             const iconOlho = document.getElementById("iconOlho");
@@ -237,24 +237,28 @@
             });
 
 
+            // Adiciona um ouvinte de evento de clique ao botão de registro
             registrarButton.addEventListener("click", () => {
+                // Obtém os valores dos campos de entrada (nome, email, telefone, usuário e senha)
                 const nome = document.querySelector('.nome input').value;
                 const email = document.querySelector('.email input').value;
                 const telefone = document.querySelector('.telefone input').value;
                 const usuario = document.querySelector('.usuario input').value;
                 const senha = document.querySelector('.senha input').value;
 
-                // Recupera todos os usuários existentes do localStorage
+
+                // Recupera todos os usuários existentes do localStorage ou cria um array vazio se não houver usuários
                 const usuariosCadastrados = JSON.parse(localStorage.getItem('usuarios')) || [];
 
-                // Verifica se o email já está cadastrado
+                // Verifica se o email já está cadastrado entre os usuários existentes
                 const usuarioExistente = usuariosCadastrados.find(user => user.email === email);
                 if (usuarioExistente) {
+                    // Se o email já estiver cadastrado, exibe um alerta e interrompe a execução
                     alert("Este email já está cadastrado. Por favor, use outro email.");
                     return;
                 }
 
-                // Adiciona o novo usuário à lista de usuários
+                // Cria um objeto representando o novo usuário com os dados fornecidos
                 const novoUsuario = {
                     nome: nome,
                     email: email,
@@ -263,16 +267,18 @@
                     senhaInput: senha
                 };
 
+                // Adiciona o novo usuário à lista de usuários existentes
                 usuariosCadastrados.push(novoUsuario);
 
-                // Atualiza o localStorage com a lista atualizada de usuários
+                // Atualiza o localStorage com a lista atualizada de usuários em formato JSON
                 localStorage.setItem('usuarios', JSON.stringify(usuariosCadastrados));
 
-                // Armazena o nome de usuário e o email do usuário atual
+                // Armazena o nome de usuário e o email do usuário atual no localStorage
                 localStorage.setItem('nomeUsuario', usuario);
                 localStorage.setItem('emailUsuario', email);
-
+                // Exibe um alerta indicando que o cadastro foi bem-sucedido
                 alert("Cadastro bem-sucedido!");
+                  // Redireciona o usuário para a página "index.html"
                 window.location.href = "index.html";
             });
 
@@ -282,44 +288,44 @@
         })
 
 
-function buscarProduto() {
-    const termoDeBusca = document.getElementById("buscar").value.toLowerCase();
-    const main = document.getElementById("main-cadastro");
-    main.innerHTML = ""; // Limpa o conteúdo atual
+        function buscarProduto() {
+            const termoDeBusca = document.getElementById("buscar").value.toLowerCase();
+            const main = document.getElementById("main-cadastro");
+            main.innerHTML = ""; // Limpa o conteúdo atual
 
-    // Realiza a busca nos elementos com a classe "livros" no arquivo "produto.html"
-    fetch("produto.html")
-        .then(response => response.text())
-        .then(data => {
-            // Crie um elemento temporário para analisar o conteúdo do produto.html
-            const tempElement = document.createElement("div");
-            tempElement.innerHTML = data;
+            // Realiza a busca nos elementos com a classe "livros" no arquivo "produto.html"
+            fetch("produto.html")
+                .then(response => response.text())
+                .then(data => {
+                    // Crie um elemento temporário para analisar o conteúdo do produto.html
+                    const tempElement = document.createElement("div");
+                    tempElement.innerHTML = data;
 
-            // Encontra os elementos com a classe "livros" e verifica se o título contém o termo de busca
-            const livros = tempElement.querySelectorAll(".livros");
-            livros.forEach(livro => {
-                const titulo = livro.querySelector("img").alt.toLowerCase();
+                    // Encontra os elementos com a classe "livros" e verifica se o título contém o termo de busca
+                    const livros = tempElement.querySelectorAll(".livros");
+                    livros.forEach(livro => {
+                        const titulo = livro.querySelector("img").alt.toLowerCase();
 
-                if (titulo.includes(termoDeBusca)) {
-                    main.appendChild(livro.cloneNode(true));
-                }
-            });
+                        if (titulo.includes(termoDeBusca)) {
+                            main.appendChild(livro.cloneNode(true));
+                        }
+                    });
 
-            // Adicione a classe "area-de-busca" a main para aplicar os estilos
-            main.classList.add("area-de-busca");
+                    // Adicione a classe "area-de-busca" a main para aplicar os estilos
+                    main.classList.add("area-de-busca");
 
-            // Verifique se há filhos na área de busca
-            if (main.children.length === 0) {
-                main.innerHTML = 'Nenhum resultado encontrado.';
-                main.style.display = "flex";
-                main.style.alignItems = "center";
-                main.style.backgroundColor = "#F8F1EE"; // Cor de fundo quando nenhum resultado é encontrado
-            }
-        })
-        .catch(error => {
-            console.error("Erro ao buscar produtos:", error);
-        });
-}
+                    // Verifique se há filhos na área de busca
+                    if (main.children.length === 0) {
+                        main.innerHTML = 'Nenhum resultado encontrado.';
+                        main.style.display = "flex";
+                        main.style.alignItems = "center";
+                        main.style.backgroundColor = "#F8F1EE"; // Cor de fundo quando nenhum resultado é encontrado
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao buscar produtos:", error);
+                });
+        }
 
 
     </script>

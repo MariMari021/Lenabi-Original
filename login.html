@@ -100,11 +100,13 @@
             <button onclick="Escolher('en')"><img src="img-interface/bandeira-estados-unidos 1.png" alt="estados unidos da america"></button>
             <button onclick="Escolher('es')"><img src="img-interface/bandeira-da-espanha 1.png" alt="espanha"></button>
         </div> -->
-    
+
         <div class="box">
             <div class="conteudo-login">
                 <div class="titulo">
-                    <h3 id="Bem"><p id="Vindo">Bem-vindo</p>de volta!</h3>
+                    <h3 id="Bem">
+                        <p id="Vindo">Bem-vindo</p>de volta!
+                    </h3>
                     <div class="linha-titulo"></div>
                 </div>
                 <div class="campo">
@@ -175,7 +177,7 @@
 
 
     <script type="text/javascript">
-    
+
 
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -212,30 +214,42 @@
                 console.error("Elemento 'loginButton' não encontrado. Verifique os IDs no HTML.");
             }
 
+
+            // Define uma função chamada realizarLogin
             function realizarLogin() {
+                // Obtém os usuários cadastrados do localStorage ou cria um array vazio se não houver usuários
                 const usuariosCadastrados = JSON.parse(localStorage.getItem('usuarios')) || [];
+                // Obtém o valor inserido no campo de email do usuário
                 const emailUsuario = document.getElementById("nomeUsuario").value;
+
+                // Obtém o valor inserido no campo de senha
                 const senha = document.getElementById("senhaInput").value;
 
+                // Procura por um usuário que corresponda ao email e senha fornecidos
                 const usuarioEncontrado = usuariosCadastrados.find(user => (
                     (emailUsuario === user.userInput || emailUsuario === user.email) &&
                     senha === user.senhaInput
                 ));
 
+                // Verifica se um usuário foi encontrado
                 if (usuarioEncontrado) {
                     // Obtém o nome de usuário e o email do objeto encontrado
                     const nomeUsuario = usuarioEncontrado.userInput || 'NomeRealDoUsuario';
                     const emailUsuario = usuarioEncontrado.email || 'EmailDoUsuario';
 
+
                     // Armazena o nome e o email do usuário no localStorage
                     localStorage.setItem('nomeUsuario', nomeUsuario);
                     localStorage.setItem('emailUsuario', emailUsuario);
 
+
+                    // Exibe um alerta indicando que o login foi bem-sucedido
                     alert("Login bem-sucedido!");
 
                     // Redireciona para a página index.html
                     window.location.href = "index.html";
                 } else {
+                     // Se nenhum usuário foi encontrado, exibe um alerta de credenciais incorretas
                     alert("Credenciais incorretas. Por favor, tente novamente.");
                 }
             }
