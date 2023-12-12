@@ -76,7 +76,7 @@ body {
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 888;
-  height: 379px;
+  min-height: 379px;
   width: 323px;
   background: #3c2520;
   color: #e3c7ba;
@@ -2435,7 +2435,7 @@ input::-webkit-inner-spin-button {
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 888;
-    height: 337px;
+    min-height: 337px;
     width: 267px;
     background: #3c2520;
     color: #e3c7ba;
@@ -3183,7 +3183,7 @@ input::-webkit-inner-spin-button {
       background-color: #ffffff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       z-index: 888;
-      height: 337px;
+      min-height: 337px;
       width: 267px;
       background: #3c2520;
       color: #e3c7ba;
@@ -3946,7 +3946,7 @@ input::-webkit-inner-spin-button {
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 888;
-    height: 337px;
+    min-height: 337px;
     width: 267px;
     background: #3c2520;
     color: #e3c7ba;
