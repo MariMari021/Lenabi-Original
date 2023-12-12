@@ -166,7 +166,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function toggleFavoritos() {
     const carrinhoItensDiv = document.getElementById("carrinho-itens");
-    carrinhoItensDiv.style.display =
       carrinhoItensDiv.style.display === "none" ? "block" : "none";
   }
 
