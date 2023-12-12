@@ -131,11 +131,11 @@
 
     <main id="sobre-nos">
 
-        <div id="idiomas">
+        <!-- <div id="idiomas">
             <button onclick="Escolher('ptbr')"><img src="img-interface/bandeira-do-brasil 1.png" alt="brasil"></button>
             <button onclick="Escolher('en')"><img src="img-interface/bandeira-estados-unidos 1.png" alt="estados unidos da america"></button>
             <button onclick="Escolher('es')"><img src="img-interface/bandeira-da-espanha 1.png" alt="espanha"></button>
-        </div>
+        </div> -->
 
         <section>
             <div class="container-sobreNos">
@@ -195,22 +195,22 @@
     <script src="user.js"></script>
     <script type="text/javascript">
 
-function Escolher(idioma) {
-    fetch(`texto_${idioma}.json`)
-        .then(resposta => resposta.json())
-        .then(texto => {
-            console.log("Valores do JSON:", texto);
+// function Escolher(idioma) {
+//     fetch(`texto_${idioma}.json`)
+//         .then(resposta => resposta.json())
+//         .then(texto => {
+//             console.log("Valores do JSON:", texto);
 
-            // Define o conteúdo do span #Bem
-            document.getElementById('h21').innerText = texto.h21;
-            document.getElementById('h22').innerText = texto.h22;
-            document.getElementById('h3').innerText = texto.h3;
-            document.getElementById('p').innerText = texto.p;
-            document.getElementById('p2').innerText = texto.p2;
-            document.getElementById('p3').innerText = texto.p3;
+//             // Define o conteúdo do span #Bem
+//             document.getElementById('h21').innerText = texto.h21;
+//             document.getElementById('h22').innerText = texto.h22;
+//             document.getElementById('h3').innerText = texto.h3;
+//             document.getElementById('p').innerText = texto.p;
+//             document.getElementById('p2').innerText = texto.p2;
+//             document.getElementById('p3').innerText = texto.p3;
             
-    })
-}
+//     })
+// }
 
 
 
